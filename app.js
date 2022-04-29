@@ -1,12 +1,18 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
-app.get('/hello',(req,res,next)=>{
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json());
+app.get('/hello',
+(req,res,next)=>{
     // Logic 
+    console.log('req auth-->',req.auth)
     res.send("Connected to the Hello.")
 })
 app.get('/',(req,res,next)=>{
     // Logic 
+    console.log('req auth-->',req.auth)
     res.send("Connected to the server.")
 })
 
